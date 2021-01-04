@@ -20,7 +20,7 @@ Pivoting is explain first since it is the core of the whole algorithm.
 
 Given an entering variable with index $q$ and a leaving variable with index $p$, we pivot around $T_{pq}$, where $T$ is the simplex tableau. To be more specific, the algorithm updates coefficient matrix $\boldsymbol{A}$, the reduced cost $\boldsymbol{r}$ and the objective value $z$ with
 
-![](imgs/2.1.svg)
+<div align=center><img src="imgs/2.1.svg"/></div>
 
 Then we update the base $\boldsymbol{B}$, meaning replace $p$ with $q$.
 
@@ -43,11 +43,11 @@ Now we take a look at how is the first phase implemented.
 
 Given a LP problem in standard form, i.e.
 
-![](imgs/2.3.1.svg)
+<div align=center><img src="imgs/2.3.1.svg"/></div>
 
 First transform it to the corresponding auxiliary problem by adding manual variables
 
-![](imgs/2.3.2.svg)
+<div align=center><img src="imgs/2.3.2.svg"/></div>
 
 Multiply $-1$ for lines that have corresponding $b<0$. Notice that $\boldsymbol{x=0, y=b}$ is a basic feasible solution for the auxiliary problem so we start solving $(5)$ with it.
 
@@ -206,7 +206,7 @@ All testing examples in this section are provided under the folder `data\`. In a
 
 The folder `data\1\` contains the following inputs
 
-![](imgs/4.1.svg)
+<div align=center><img src="imgs/4.1.svg"/></div>
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -238,7 +238,7 @@ Run time: 0.01399993896484375 second
 
 The folder `data\2\` contains the following inputs
 
-![](imgs/4.2.svg)
+<div align=center><img src="imgs/4.2.svg"/></div>
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -321,7 +321,7 @@ Run time: 0.024999380111694336 second
 
 The folder `data\4\` contains the following inputs, which tests the **degenerate case**
 
-![](imgs/4.4.svg)
+<div align=center><img src="imgs/4.4.svg"/></div>
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -354,7 +354,7 @@ Run time: 0.013999223709106445 second
 
 The folder `data\5\` contains the following inputs, which tests the **unbounded case**
 
-![](imgs/4.5.svg)
+<div align=center><img src="imgs/4.5.svg"/></div>
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -370,7 +370,7 @@ Run time: 0.000989675521850586 second
 
 The folder `data\6\` contains the following inputs, which tests the **infeasible case**
 
-![](imgs/4.6.svg)
+<div align=center><img src="imgs/4.6.svg"/></div>
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
