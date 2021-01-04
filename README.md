@@ -19,31 +19,8 @@ This project implements a Simplex solver basically follows from Dimitris Bertsim
 Pivoting is explain first since it is the core of the whole algorithm.
 
 Given an entering variable with index $q$ and a leaving variable with index $p$, we pivot around $T_{pq}$, where $T$ is the simplex tableau. To be more specific, the algorithm updates coefficient matrix $\boldsymbol{A}$, the reduced cost $\boldsymbol{r}$ and the objective value $z$ with
-$$
-A_{ij}' = 
-    \left\{  
-        \begin{array}{lr}  
-            A_{ij} - \frac{A_{pj}}{A_{pq}} A_{iq}, & i \neq p  \\  
-            \frac{A_{pj}}{A_{pq}}, & i = p   
-        \end{array}  
-    \right. \tag{1}
-$$
 
-$$
-\begin{equation}
-    \begin{aligned}
-        r_j' = r_j - \frac{A_{pj}}{A_{pq}} r_q
-    \end{aligned}
-\end{equation} \tag{2}
-$$
-
-$$
-\begin{equation}
-    \begin{aligned}
-        z' = z - \frac{A_{pj}}{A_{pq}} r_q
-    \end{aligned}
-\end{equation} \tag{3}
-$$
+![](imgs\2.1.svg)
 
 Then we update the base $\boldsymbol{B}$, meaning replace $p$ with $q$.
 
@@ -65,26 +42,13 @@ To avoid degeneracy, the implementation follows the Bland's rule, i.e.
 Now we take a look at how is the first phase implemented.
 
 Given a LP problem in standard form, i.e.
-$$
-\begin{equation}
-    \begin{aligned}
-        \min_{\boldsymbol{x}}\quad & \boldsymbol{c}^T \boldsymbol{x} \\
-        \text{s.t.}\quad & \boldsymbol{Ax = b} \\
-                         & \boldsymbol{x \geq 0}
-    \end{aligned}
-\end{equation} \tag{4}
-$$
+
+![](imgs\2.3.1.svg)
+
 First transform it to the corresponding auxiliary problem by adding manual variables
-$$
-\begin{equation}
-    \begin{aligned}
-        \min_{\boldsymbol{x}\in \mathbb{R}^n, \boldsymbol{y}\in \mathbb{R}^m}\quad & \sum_{i=1}^m y_i \\
-        \text{s.t.}\quad & \boldsymbol{Ax + y = b} \\
-                         & \boldsymbol{x \geq 0} \\
-                         & \boldsymbol{y \geq 0}
-    \end{aligned}
-\end{equation} \tag{5}
-$$
+
+![](imgs\2.3.2.svg)
+
 Multiply $-1$ for lines that have corresponding $b<0$. Notice that $\boldsymbol{x=0, y=b}$ is a basic feasible solution for the auxiliary problem so we start solving $(5)$ with it.
 
 The algorithm finds an entering variable $q$ from examining the reduced costs and finds a leaving variable $p$ from examining the corresponding "b/y ratio" as described in section 2.2. Then the algorithm invokes pivoting as described in section 2.1. Continue this procedure until the optimal solution for the auxiliary problem is obtained. Now, if the optimal objective value for the auxiliary problem is larger than 0, then the primal problem is infeasible; if the optimal objective value for the auxiliary problem is 0, then the primal problem has feasible solution.
@@ -241,39 +205,9 @@ All testing examples in this section are provided under the folder `data\`. In a
 ### 4.1 Test 1
 
 The folder `data\1\` contains the following inputs
-$$
-\begin{equation}
-    \begin{aligned}
-        \boldsymbol{A} = 
-        \left[ 
-            \begin{matrix}
-                6 & 1 & -2 & -1 & 0 & 0 \\
-                1 & 1 & 1 & 0 & 1 & 0 \\
-                6 & 4 & -2 & 0 & 0 & -1
-            \end{matrix}
-        \right],
-        \boldsymbol{c} = 
-        \left[ 
-            \begin{matrix}
-                5 \\
-                2 \\
-                -4 \\
-                0 \\
-                0 \\
-                0
-            \end{matrix}
-        \right],
-        \boldsymbol{b} = 
-        \left[ 
-            \begin{matrix}
-                5 \\
-                4 \\
-                10
-            \end{matrix}
-        \right]
-    \end{aligned}
-\end{equation}
-$$
+
+<img src="imgs\4.1.svg"/>
+
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
 ```bash
@@ -303,39 +237,9 @@ Run time: 0.01399993896484375 second
 ### 4.2 Test 2
 
 The folder `data\2\` contains the following inputs
-$$
-\begin{equation}
-    \begin{aligned}
-        \boldsymbol{A} = 
-        \left[ 
-            \begin{matrix}
-                1 & 0 & 0 & 1 & 0 & 0 \\
-                20 & 1 & 0 & 0 & 1 & 0 \\
-                200 & 20 & 1 & 0 & 0 & 1
-            \end{matrix}
-        \right],
-        \boldsymbol{c} = 
-        \left[ 
-            \begin{matrix}
-                -100 \\
-                -10 \\
-                -1 \\
-                0 \\
-                0 \\
-                0
-            \end{matrix}
-        \right],
-        \boldsymbol{b} = 
-        \left[ 
-            \begin{matrix}
-                1 \\
-                100 \\
-                10000
-            \end{matrix}
-        \right]
-    \end{aligned}
-\end{equation}
-$$
+
+![](imgs\4.2.svg)
+
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
 ```bash
@@ -364,54 +268,7 @@ Run time: 0.014025449752807617 second
 
 ### 4.3 Test 3
 
-The folder `data\3\` contains the following inputs
-$$
-\begin{equation}
-    \begin{aligned}
-        \boldsymbol{A} = 
-        \left[ 
-            \begin{matrix}
-                1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-                0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\
-                0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 1 \\
-                1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 \\
-                0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 \\
-                0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 \\
-                0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 \\
-                0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 \\
-                0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 \\
-                0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 1 \\
-            \end{matrix}
-        \right],
-    \end{aligned}
-\end{equation}
-$$
-
-$$
-\begin{equation}
-    \begin{aligned}
-        \boldsymbol{c} = 
-        \left[ 
-            \begin{matrix}
-                -100 \\
-                -10 \\
-                -1 \\
-                0 \\
-                0 \\
-                0
-            \end{matrix}
-        \right], 
-        \boldsymbol{b} = 
-        \left[ 
-            \begin{matrix}
-                1 \\
-                100 \\
-                10000
-            \end{matrix}
-        \right]
-    \end{aligned}
-\end{equation}
-$$
+The folder `data\3\` contains a large input and it's omitted here.
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -463,47 +320,8 @@ Run time: 0.024999380111694336 second
 ### 4.4 Test 4
 
 The folder `data\4\` contains the following inputs, which tests the **degenerate case**
-$$
-\begin{equation}
-    \begin{aligned}
-        \boldsymbol{A} = 
-        \left[ 
-            \begin{matrix}
-                1 & 0 & 0 & 0.25 & -8 & -1 & 9 \\
-                0 & 1 & 0 & 0.5 & -12 & -0.5 & 3 \\
-                0 & 0 & 1 & 0 & 0 & 1 & 0
-            \end{matrix}
-        \right],
-    \end{aligned}
-\end{equation}
-$$
 
-$$
-\begin{equation}
-    \begin{aligned}
-        \boldsymbol{c} = 
-            \left[ 
-                \begin{matrix}
-                    0 \\
-                    0 \\
-                    0 \\
-                    -0.75 \\
-                    20 \\
-                    -0.5 \\
-                    6
-                \end{matrix}
-            \right],
-        \boldsymbol{b} = 
-        \left[ 
-            \begin{matrix}
-                0 \\
-                0 \\
-                1
-            \end{matrix}
-        \right]
-    \end{aligned}
-\end{equation}
-$$
+![](imgs/4.4.svg)
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -535,35 +353,9 @@ Run time: 0.013999223709106445 second
 ### 4.5 Test 5
 
 The folder `data\5\` contains the following inputs, which tests the **unbounded case**
-$$
-\begin{equation}
-    \begin{aligned}
-        \boldsymbol{A} = 
-        \left[ 
-            \begin{matrix}
-                1 & 0 & -1 & 0\\
-                0 & 1 & 0 & -1
-            \end{matrix}
-        \right],
-        \boldsymbol{c} = 
-        \left[ 
-            \begin{matrix}
-                1 \\
-                -1 \\
-                0 \\
-                0
-            \end{matrix}
-        \right],
-        \boldsymbol{b} = 
-        \left[ 
-            \begin{matrix}
-                0 \\
-                0
-            \end{matrix}
-        \right]
-    \end{aligned}
-\end{equation}
-$$
+
+![](imgs/4.5.svg)
+
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
 ```bash
@@ -577,31 +369,9 @@ Run time: 0.000989675521850586 second
 ### 4.6 Test 6
 
 The folder `data\6\` contains the following inputs, which tests the **infeasible case**
-$$
-\begin{equation}
-    \begin{aligned}
-        \boldsymbol{A} = 
-        \left[ 
-            \begin{matrix}
-                1 & 1
-            \end{matrix}
-        \right],
-        \boldsymbol{c} = 
-        \left[ 
-            \begin{matrix}
-                1 \\
-                0
-            \end{matrix}
-        \right],
-        \boldsymbol{b} = 
-        \left[ 
-            \begin{matrix}
-                -1
-            \end{matrix}
-        \right]
-    \end{aligned}
-\end{equation}
-$$
+
+![](imgs/4.6.svg)
+
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
 ```bash
