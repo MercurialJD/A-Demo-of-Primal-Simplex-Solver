@@ -10,7 +10,7 @@ This project implements a Simplex solver basically follows from Dimitris Bertsim
 
 ## 2 Implementation
 
-**If you just want to know how to use the script, you can SKIP this section.**
+**If you just want to know how to use the script, you can SKIP this section and take a look at SECTION 3 instead.**
 
 
 
