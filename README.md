@@ -20,17 +20,13 @@ Pivoting is explain first since it is the core of the whole algorithm.
 
 Given an entering variable with index $q$ and a leaving variable with index $p$, we pivot around $T_{pq}$, where $T$ is the simplex tableau. To be more specific, the algorithm updates coefficient matrix $\boldsymbol{A}$, the reduced cost $\boldsymbol{r}$ and the objective value $z$ with
 $$
-\begin{equation}
-    \begin{aligned}
-        A_{ij}' = 
-        \left\{  
-            \begin{array}{lr}  
-                A_{ij} - \frac{A_{pj}}{A_{pq}} A_{iq}, & i \neq p  \\  
-                \frac{A_{pj}}{A_{pq}}, & i = p   
-            \end{array}  
-        \right.
-    \end{aligned}
-\end{equation} \tag{1}
+A_{ij}' = 
+    \left\{  
+        \begin{array}{lr}  
+            A_{ij} - \frac{A_{pj}}{A_{pq}} A_{iq}, & i \neq p  \\  
+            \frac{A_{pj}}{A_{pq}}, & i = p   
+        \end{array}  
+    \right. \tag{1}
 $$
 
 $$
@@ -246,7 +242,7 @@ All testing examples in this section are provided under the folder `data\`. In a
 
 The folder `data\1\` contains the following inputs
 $$
-\begin{equation*}
+\begin{equation}
     \begin{aligned}
         \boldsymbol{A} = 
         \left[ 
@@ -276,7 +272,7 @@ $$
             \end{matrix}
         \right]
     \end{aligned}
-\end{equation*}
+\end{equation}
 $$
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -308,7 +304,7 @@ Run time: 0.01399993896484375 second
 
 The folder `data\2\` contains the following inputs
 $$
-\begin{equation*}
+\begin{equation}
     \begin{aligned}
         \boldsymbol{A} = 
         \left[ 
@@ -338,7 +334,7 @@ $$
             \end{matrix}
         \right]
     \end{aligned}
-\end{equation*}
+\end{equation}
 $$
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -370,7 +366,7 @@ Run time: 0.014025449752807617 second
 
 The folder `data\3\` contains the following inputs
 $$
-\begin{equation*}
+\begin{equation}
     \begin{aligned}
         \boldsymbol{A} = 
         \left[ 
@@ -388,11 +384,11 @@ $$
             \end{matrix}
         \right],
     \end{aligned}
-\end{equation*}
+\end{equation}
 $$
 
 $$
-\begin{equation*}
+\begin{equation}
     \begin{aligned}
         \boldsymbol{c} = 
         \left[ 
@@ -414,10 +410,8 @@ $$
             \end{matrix}
         \right]
     \end{aligned}
-\end{equation*}
+\end{equation}
 $$
-
-
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -470,7 +464,7 @@ Run time: 0.024999380111694336 second
 
 The folder `data\4\` contains the following inputs, which tests the **degenerate case**
 $$
-\begin{equation*}
+\begin{equation}
     \begin{aligned}
         \boldsymbol{A} = 
         \left[ 
@@ -481,11 +475,11 @@ $$
             \end{matrix}
         \right],
     \end{aligned}
-\end{equation*}
+\end{equation}
 $$
 
 $$
-\begin{equation*}
+\begin{equation}
     \begin{aligned}
         \boldsymbol{c} = 
             \left[ 
@@ -508,7 +502,7 @@ $$
             \end{matrix}
         \right]
     \end{aligned}
-\end{equation*}
+\end{equation}
 $$
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
@@ -542,7 +536,7 @@ Run time: 0.013999223709106445 second
 
 The folder `data\5\` contains the following inputs, which tests the **unbounded case**
 $$
-\begin{equation*}
+\begin{equation}
     \begin{aligned}
         \boldsymbol{A} = 
         \left[ 
@@ -568,7 +562,7 @@ $$
             \end{matrix}
         \right]
     \end{aligned}
-\end{equation*}
+\end{equation}
 $$
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -584,7 +578,7 @@ Run time: 0.000989675521850586 second
 
 The folder `data\6\` contains the following inputs, which tests the **infeasible case**
 $$
-\begin{equation*}
+\begin{equation}
     \begin{aligned}
         \boldsymbol{A} = 
         \left[ 
@@ -606,7 +600,7 @@ $$
             \end{matrix}
         \right]
     \end{aligned}
-\end{equation*}
+\end{equation}
 $$
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
