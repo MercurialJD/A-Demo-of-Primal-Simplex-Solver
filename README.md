@@ -131,7 +131,7 @@ python simplex.py data\ --step
 The printed Simplex tableau can be represented as the table shown below, where $\boldsymbol{A}$ is the matrix of coefficients, $\boldsymbol{b}$ is the vector of right hand values, $\boldsymbol{r}$ is the vector of reduced costs and $z$ is the opposite number of the true objective value.
 
 ```bash
-┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━┓
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━┓
 ┃                                                                                 ┃   ┃
 ┃                                                                                 ┃   ┃
 ┃                                                                                 ┃   ┃
@@ -141,9 +141,9 @@ The printed Simplex tableau can be represented as the table shown below, where $
 ┃                                                                                 ┃   ┃
 ┃                                                                                 ┃   ┃
 ┃                                                                                 ┃   ┃
-┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━┫
+┣━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╋━━━┫
 ┃                                         r                                       ┃ z ┃
-┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━┛
+┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┻━━━┛
 ```
 
 **Note: You should turn this functionality off when you want to test run time, since printing requires lots of time.**
