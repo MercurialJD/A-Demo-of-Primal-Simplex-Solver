@@ -384,4 +384,4 @@ Run time: 0.0009996891021728516 second
 
 ## 5 Conclusion
 
-This project implements a prototype of Simplex solver, which solves LP problems in two phases. The implementation is capable of detecting unboundedness, infeasibility and avoiding degeneracy. Although the efficiency of this implementation might not be the best, this project should still a good start for linear optimization.
+This project implements a prototype of Simplex solver, which solves LP problems in two phases. The implementation is capable of detecting unboundedness, infeasibility and avoiding degeneracy. Although the efficiency of this implementation might not be the best, this project should still be a good start for linear optimization.
