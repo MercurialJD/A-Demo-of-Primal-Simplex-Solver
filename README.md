@@ -20,7 +20,7 @@ Pivoting is explain first since it is the core of the whole algorithm.
 
 Given an entering variable with index $q$ and a leaving variable with index $p$, we pivot around $T_{pq}$, where $T$ is the simplex tableau. To be more specific, the algorithm updates coefficient matrix $\boldsymbol{A}$, the reduced cost $\boldsymbol{r}$ and the objective value $z$ with
 
-![](imgs\2.1.svg)
+![](imgs/2.1.svg)
 
 Then we update the base $\boldsymbol{B}$, meaning replace $p$ with $q$.
 
@@ -43,11 +43,11 @@ Now we take a look at how is the first phase implemented.
 
 Given a LP problem in standard form, i.e.
 
-![](imgs\2.3.1.svg)
+![](imgs/2.3.1.svg)
 
 First transform it to the corresponding auxiliary problem by adding manual variables
 
-![](imgs\2.3.2.svg)
+![](imgs/2.3.2.svg)
 
 Multiply $-1$ for lines that have corresponding $b<0$. Notice that $\boldsymbol{x=0, y=b}$ is a basic feasible solution for the auxiliary problem so we start solving $(5)$ with it.
 
@@ -206,7 +206,7 @@ All testing examples in this section are provided under the folder `data\`. In a
 
 The folder `data\1\` contains the following inputs
 
-<img src="imgs\4.1.svg"/>
+![](imgs/4.1.svg)
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
@@ -238,7 +238,7 @@ Run time: 0.01399993896484375 second
 
 The folder `data\2\` contains the following inputs
 
-![](imgs\4.2.svg)
+![](imgs/4.2.svg)
 
 The output of objective value, primal solution, dual solution, number of pivots and run time are listed below
 
