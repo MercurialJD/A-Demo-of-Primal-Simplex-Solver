@@ -37,7 +37,7 @@ To avoid degeneracy, the implementation follows the Bland's rule, i.e.
 
 
 
-### 2.3 First Phase
+### 2.3 Phase Ⅰ
 
 Now we take a look at how is the first phase implemented.
 
@@ -59,7 +59,7 @@ Finally, give out the feasible solution of the primal problem as will as the res
 
 
 
-### 2.4 Second Phase
+### 2.4 Phase Ⅱ
 
 The first phase has generated a BFS for the primal problem and we can start solving $(4)$ with it.
 
