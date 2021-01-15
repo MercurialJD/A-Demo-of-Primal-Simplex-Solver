@@ -140,7 +140,7 @@ class Simplex():
 		self.pivot_cnt += 1
 		pivot_elem = A[leave_var_idx, enter_var_idx]
 		if self.verbose:
-			print("-- %d pivot: x_%d enter, x_%d leave" % (self.pivot_cnt, enter_var_idx+1, B[leave_var_idx]+1))
+			print("-- No.%d pivot: x_%d enter, x_%d leave" % (self.pivot_cnt, enter_var_idx+1, B[leave_var_idx]+1))
 
 		# Update the line for leaving variable
 		A[leave_var_idx], b[leave_var_idx] = A[leave_var_idx] / pivot_elem, b[leave_var_idx] / pivot_elem
